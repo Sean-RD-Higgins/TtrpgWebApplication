@@ -1,0 +1,94 @@
+﻿@{
+    ViewData["Title"] = "Create Character";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"] - @Model.Ttrpg.Game.Name</h1>
+
+    <div class="card-wrapper">
+        @foreach (var field in Model.Ttrpg.FieldList) {
+            <div class="card">
+                <span class="stat-name" for="@field.Tag">@field.Name</span>
+                @if(field.HasValueList()) {
+                    <select class="stat-value"
+                        name="@field.Tag" 
+                        id="@field.Tag"
+                        value="@field.GetDefaultValue()"
+                        onclick='
+                            if (this.value == "" || this.value == 0) {
+                                @foreach (var formula in field.FormulaList) {
+                                    @if(formula.GetPriority() == 0) {
+                                        @Html.Raw(string.Concat("\t\t\t\t\t\t\t\t ", formula.GetFormula(), " \n\r"));
+                                    }
+                                }
+                                return;
+                            }
+                            let formulaMap = {
+                                @foreach (var formula in field.FormulaList) {
+                                    @if(formula.GetPriority() != 0) {
+                                        @Html.Raw(string.Concat("\t\t\t\t\t\t\t\t", "\"", formula.GetValue(), "\"", ": function() {", formula.GetFormula(), "},\n\r"));
+                                    }
+                                }
+                            };
+                            var functionCall = formulaMap[this.value];
+                            var emptyFunctionCall = formulaMap[""];
+                            if(functionCall) {
+                                functionCall();
+                            }
+                            else if(emptyFunctionCall) {
+                                emptyFunctionCall();
+                            }
+                        '
+
+                        onchange='
+                            refreshAllStats();
+                        '
+                    >
+                            <option value=""> - Please Select - </option>
+                        @foreach (var valueText in field.GetValueList()) {
+                            <option value="@valueText">@valueText</option>
+                        }
+                    </select>
+                }
+                @if(!field.HasValueList()) {
+                    <input class="stat-value"
+                        name="@field.Tag"
+                        id="@field.Tag"
+                        value="@field.GetDefaultValue()"
+                        type="text"
+                        @field.GetReadonlyAttribute()
+                        onclick='
+                            if (this.value == "" || this.value == 0) {
+                                @foreach (var formula in field.FormulaList) {
+                                    @if(formula.GetPriority() == 0) {
+                                        @Html.Raw(string.Concat("\t\t\t\t\t\t\t\t ", formula.GetFormula(), " \n\r"));
+                                    }
+                                }
+                                return;
+                            }
+                            let formulaMap = {
+                                @foreach (var formula in field.FormulaList) {
+                                    @if(formula.GetPriority() != 0) {
+                                        @Html.Raw(string.Concat("\t\t\t\t\t\t\t\t", "\"", formula.GetValue(), "\"", ": function() {", formula.GetFormula(), "},\n\r"));
+                                    }
+                                }
+                            }
+                            var functionCall = formulaMap[this.value];
+                            var emptyFunctionCall = formulaMap[""];
+                            if(functionCall) {
+                                functionCall();
+                            }
+                            else if(emptyFunctionCall) {
+                                emptyFunctionCall();
+                            }
+                        '
+
+                        onchange='
+                            refreshAllStats();
+                        '
+                    />
+                }
+            </div>
+        }
+    </div>
+</div>

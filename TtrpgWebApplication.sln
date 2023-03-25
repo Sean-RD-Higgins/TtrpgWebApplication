@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TtrpgWebApplication", "TtrpgWebApplication\TtrpgWebApplication.csproj", "{4BE071BE-CD4C-40DF-A0AC-4A2350A5D9E0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TtrpgLibrary", "TtrpgLibrary\TtrpgLibrary.csproj", "{98FFC77B-5375-48DB-865E-D8E94BAB1688}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TtrpgConsoleApp", "TtrpgConsoleApp\TtrpgConsoleApp.csproj", "{266A9DF7-D51C-47FA-A939-3C0BD60F784E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TtrpgTestProject", "TtrpgTestProject\TtrpgTestProject.csproj", "{1574D954-308C-46FD-BA39-B7A730548DD8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4BE071BE-CD4C-40DF-A0AC-4A2350A5D9E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BE071BE-CD4C-40DF-A0AC-4A2350A5D9E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BE071BE-CD4C-40DF-A0AC-4A2350A5D9E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BE071BE-CD4C-40DF-A0AC-4A2350A5D9E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98FFC77B-5375-48DB-865E-D8E94BAB1688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98FFC77B-5375-48DB-865E-D8E94BAB1688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98FFC77B-5375-48DB-865E-D8E94BAB1688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98FFC77B-5375-48DB-865E-D8E94BAB1688}.Release|Any CPU.Build.0 = Release|Any CPU
+		{266A9DF7-D51C-47FA-A939-3C0BD60F784E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{266A9DF7-D51C-47FA-A939-3C0BD60F784E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{266A9DF7-D51C-47FA-A939-3C0BD60F784E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{266A9DF7-D51C-47FA-A939-3C0BD60F784E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1574D954-308C-46FD-BA39-B7A730548DD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1574D954-308C-46FD-BA39-B7A730548DD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1574D954-308C-46FD-BA39-B7A730548DD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1574D954-308C-46FD-BA39-B7A730548DD8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {37B87F53-2CAD-432C-A0D6-2D720191D4B5}
+	EndGlobalSection
+EndGlobal

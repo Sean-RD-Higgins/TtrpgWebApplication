@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Game List";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+
+    <div class='card-wrapper'>
+       @foreach (var game in Model.GameList) {
+            <div class="card">
+                <span>@game.Name</span>
+                @Html.ActionLink("Create Character", "Create", new { id=game.Id })
+            </div>
+       }
+    </div>
+</div>
