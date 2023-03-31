@@ -76,7 +76,12 @@ namespace TtrpgLibrary.Repos
 
 				{
 					// TODO change to view.
-					const string getGameCommand = "SELECT id, tag, typeid, valuelist, name FROM TtrpgFields WHERE gameid = @gameid;";
+					const string getGameCommand = @"
+						SELECT id, tag, typeid, valuelist, name, TtrpgFields.order
+						FROM TtrpgFields 
+						WHERE gameid = @gameid
+						ORDER BY TtrpgFields.order ASC;
+					";
 					MySqlCommand sqlStatement = new(getGameCommand, _ttrpgRepositoryConfiguration.GetConnection());
 					sqlStatement.Parameters.AddWithValue("@gameid", ttrpgGameId);
 					MySqlDataReader rs = sqlStatement.ExecuteReader();
@@ -89,6 +94,7 @@ namespace TtrpgLibrary.Repos
 						field.SetTypeId((int)rs[index++]);
 						field.SetValueListText((string)rs[index++]);
 						field.SetName((string)rs[index++]);
+						field.Order = (int)rs[index++];
 						field.SetGameId(ttrpgGameId);
 						ttrpg.GetFieldList().Add(field);
 					}
@@ -102,7 +108,8 @@ namespace TtrpgLibrary.Repos
 						FROM TtrpgFormulas
 							INNER JOIN TtrpgFields
 								ON TtrpgFields.id = TtrpgFormulas.fieldid
-						WHERE TtrpgFields.gameid = @gameid;
+						WHERE TtrpgFields.gameid = @gameid
+						ORDER BY TtrpgFormulas.priority ASC;
 					";
 					MySqlCommand sqlStatement = new(getGameCommand, _ttrpgRepositoryConfiguration.GetConnection());
 					sqlStatement.Parameters.AddWithValue("@gameid", ttrpgGameId);
@@ -122,7 +129,7 @@ namespace TtrpgLibrary.Repos
 							fieldList = new();
 							ttrpg.GetFieldList().Add(fieldList);
 						}
-						fieldList.GetFormulaList().Add(formula);
+						fieldList.AddFormula(formula);
 					}
 					rs.Close();
 				}

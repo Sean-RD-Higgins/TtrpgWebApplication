@@ -31,6 +31,7 @@ CREATE TABLE `ttrpgfields` (
   `typeid` int NOT NULL COMMENT 'The typeid is the data type entered.  It matches the enumeration IDs in the code.',
   `valuelist` varchar(2048) NOT NULL COMMENT 'comma separated list of possible values',
   `name` varchar(255) NOT NULL COMMENT 'The displayname is what is displayed on the actual screen for a user to see.',
+  `order` int NOT NULL DEFAULT (0),
   PRIMARY KEY (`id`),
   KEY `gameid` (`gameid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
@@ -42,7 +43,7 @@ CREATE TABLE `ttrpgfields` (
 
 LOCK TABLES `ttrpgfields` WRITE;
 /*!40000 ALTER TABLE `ttrpgfields` DISABLE KEYS */;
-INSERT INTO `ttrpgfields` VALUES (1,0,'charaname',1,'','Character Name'),(2,0,'race',3,'Human,Elf,Dwarf','Race'),(3,0,'ac',0,'','Armor Class'),(4,0,'str',0,'','Strength'),(5,0,'dex',0,'','Dexterity'),(6,0,'con',0,'','Constitution'),(7,0,'int',0,'','Intelligence'),(8,0,'wis',0,'','Wisdom'),(9,0,'cha',0,'','Charisma'),(11,0,'playername',1,'','Player Name'),(21,0,'base_str',2,'','Base Strength'),(23,0,'base_dex',2,'','Base Dexterity'),(24,0,'base_con',2,'','Base Constitution'),(25,0,'base_int',2,'','Base Intelligence'),(26,0,'base_wis',2,'','Base Wisdom'),(27,0,'base_cha',2,'','Base Charisma');
+INSERT INTO `ttrpgfields` VALUES (1,0,'charaname',1,'','Character Name',0),(2,0,'race',3,'Human,Elf,Dwarf','Race',2),(3,0,'ac',0,'','Armor Class',3),(4,0,'str',0,'','Strength',5),(5,0,'dex',0,'','Dexterity',7),(6,0,'con',0,'','Constitution',9),(7,0,'int',0,'','Intelligence',11),(8,0,'wis',0,'','Wisdom',13),(9,0,'cha',0,'','Charisma',15),(11,0,'playername',1,'','Player Name',1),(21,0,'base_str',2,'','Base Strength',4),(23,0,'base_dex',2,'','Base Dexterity',6),(24,0,'base_con',2,'','Base Constitution',8),(25,0,'base_int',2,'','Base Intelligence',10),(26,0,'base_wis',2,'','Base Wisdom',12),(27,0,'base_cha',2,'','Base Charisma',14);
 /*!40000 ALTER TABLE `ttrpgfields` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -107,4 +108,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-25 14:08:39
+-- Dump completed on 2023-03-30 22:34:26

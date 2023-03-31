@@ -12,6 +12,7 @@ namespace TtrpgLibrary.Models
 		public int TypeId { get { return _typeId; } set { _typeId = value; } }
 		public string ValueListText { get { return _valueListText; } set { _valueListText = value; } }
 		public List<TtrpgFormula> FormulaList { get { return _formulaList; } set { _formulaList = value; } }
+		public int Order { get { return _order; } set { _order = value; } }
 
 		private int _id;
 		private int _gameId;
@@ -20,8 +21,9 @@ namespace TtrpgLibrary.Models
 		private int _typeId;
 		private string _valueListText = string.Empty;
 		private List<TtrpgFormula> _formulaList = new();
+        private int _order;
 
-		public TtrpgField()
+        public TtrpgField()
 		{
 		}
 
@@ -136,6 +138,11 @@ namespace TtrpgLibrary.Models
 		public void SetFormulaList(List<TtrpgFormula> formulaList)
 		{
 			_formulaList = formulaList;
+		}
+
+		public void AddFormula(TtrpgFormula formula)
+		{
+			_formulaList.Add(formula);
 		}
 
 		public List<TtrpgFormula> GetFormulaList()
