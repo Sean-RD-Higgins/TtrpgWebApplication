@@ -26,17 +26,17 @@
                             let formulaMap = {
                                 @foreach (var formula in field.FormulaList) {
                                     @if(formula.GetPriority() != 0) {
-                                        @Html.Raw(string.Concat("\t\t\t\t\t\t\t\t", "\"", formula.GetValue(), "\"", ": function() {", formula.GetFormula(), "},\n\r"));
+                                        @Html.Raw(string.Concat("\t\t\t\t\t\t\t\t", "\"", formula.GetValue(), "\"", ": function() {if(", formula.GetPriority() ," === priority){", formula.GetFormula(), "}},\n\r"));
                                     }
                                 }
                             };
                             var functionCall = formulaMap[this.value];
-                            var emptyFunctionCall = formulaMap[""];
+                            var defaultFunctionCall = formulaMap[""];
                             if(functionCall) {
                                 functionCall();
                             }
-                            else if(emptyFunctionCall) {
-                                emptyFunctionCall();
+                            else if(defaultFunctionCall) {
+                                defaultFunctionCall();
                             }
                         '
 
@@ -69,17 +69,17 @@
                             let formulaMap = {
                                 @foreach (var formula in field.FormulaList) {
                                     @if(formula.GetPriority() != 0) {
-                                        @Html.Raw(string.Concat("\t\t\t\t\t\t\t\t", "\"", formula.GetValue(), "\"", ": function() {", formula.GetFormula(), "},\n\r"));
+                                        @Html.Raw(string.Concat("\t\t\t\t\t\t\t\t", "\"", formula.GetValue(), "\"", ": function() {if(", formula.GetPriority() ," === priority){", formula.GetFormula(), "}},\n\r"));
                                     }
                                 }
                             }
                             var functionCall = formulaMap[this.value];
-                            var emptyFunctionCall = formulaMap[""];
+                            var defaultFunctionCall = formulaMap[""];
                             if(functionCall) {
                                 functionCall();
                             }
-                            else if(emptyFunctionCall) {
-                                emptyFunctionCall();
+                            else if(defaultFunctionCall) {
+                                defaultFunctionCall();
                             }
                         '
 

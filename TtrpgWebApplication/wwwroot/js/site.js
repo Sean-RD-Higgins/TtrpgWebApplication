@@ -4,6 +4,11 @@
 function refreshAllStats() {
     let statNodeList = $(".stat-value");
     for (let statNode of statNodeList) {
+        priority = 1;
+        statNode.click();
+    }
+    for (let statNode of statNodeList) {
+        priority = 2;
         statNode.click();
     }
 }
@@ -23,7 +28,7 @@ function addToStat(targetFieldTagName, sourceFieldName, addedValue) {
 function addStat(fieldTagName, addedValue) {
     let nodeSelector = "#" + fieldTagName;
     let node = $(nodeSelector);
-    if (node.val() == "") {
+    if (node.val() === "") {
         node.val(0);
     }
     node.val(parseInt(node.val()) + addedValue);
@@ -47,5 +52,9 @@ function getStat(fieldTagName) {
     return node.val();
 }
 
+priority = 0;
 refreshAllStats();
+priority = 1;
+refreshAllStats();
+priority = 2;
 refreshAllStats();
